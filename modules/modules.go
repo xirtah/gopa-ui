@@ -1,5 +1,5 @@
 /*
-Copyright 2016 Medcl (m AT medcl.net)
+Copyright 2018 Sameer Saini (sameer.saini@outlook.com)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,15 +24,6 @@ import (
 
 // Register is where modules are registered
 func Register() {
-	// module.Register(module.Database, persist.DatabaseModule{})
-	// module.Register(module.Storage, storage.StorageModule{})
-	// module.Register(module.Filter, filter.FilterModule{})
-	// module.Register(module.Stats, stats.SimpleStatsModule{})
-	// module.Register(module.Queue, queue.DiskQueue{})
 	module.Register(module.Index, index.IndexModule{})
-	// module.Register(module.System, pipeline.PipelineFrameworkModule{})
-	// module.Register(module.System, dispatch.DispatchModule{})
-	// module.Register(module.System, cluster.ClusterModule{})
 	module.Register(module.System, ui.UIModule{})
-	// module.Register(module.System, api.APIModule{})
 }
