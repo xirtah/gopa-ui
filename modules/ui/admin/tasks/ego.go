@@ -5,13 +5,14 @@ package tasks
 
 import (
 	"fmt"
-	api "github.com/xirtah/gopa-framework/core/http"
-	"github.com/xirtah/gopa-framework/core/i18n"
-	"github.com/xirtah/gopa-framework/core/model"
-	"github.com/xirtah/gopa-spider/modules/ui/common"
 	"html"
 	"io"
 	"net/http"
+
+	api "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/i18n"
+	"github.com/xirtah/gopa-framework/core/model"
+	"github.com/xirtah/gopa-ui/modules/ui/common"
 )
 
 var _ = fmt.Sprint("") // just so that we can keep the fmt import for now

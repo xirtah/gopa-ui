@@ -19,8 +19,8 @@ package admin
 import (
 	api "github.com/xirtah/gopa-framework/core/http"
 	"github.com/xirtah/gopa-framework/core/model"
-	"github.com/xirtah/gopa-spider/modules/ui/admin/ajax"
-	"github.com/xirtah/gopa-spider/modules/ui/common"
+	"github.com/xirtah/gopa-ui/modules/ui/admin/ajax"
+	"github.com/xirtah/gopa-ui/modules/ui/common"
 )
 
 // InitUI register ui handlers

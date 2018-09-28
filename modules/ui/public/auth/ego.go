@@ -5,11 +5,12 @@ package auth
 
 import (
 	"fmt"
-	"github.com/xirtah/gopa-framework/core/util"
-	"github.com/xirtah/gopa-spider/modules/ui/common"
 	"html"
 	"io"
 	"net/http"
+
+	"github.com/xirtah/gopa-framework/core/util"
+	"github.com/xirtah/gopa-ui/modules/ui/common"
 )
 
 var _ = fmt.Sprint("") // just so that we can keep the fmt import for now

@@ -10,11 +10,11 @@ import (
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/persist"
 	"github.com/xirtah/gopa-spider/modules/config"
-	"github.com/xirtah/gopa-spider/modules/ui/admin/console"
-	"github.com/xirtah/gopa-spider/modules/ui/admin/dashboard"
-	"github.com/xirtah/gopa-spider/modules/ui/admin/explore"
-	"github.com/xirtah/gopa-spider/modules/ui/admin/setting"
-	"github.com/xirtah/gopa-spider/modules/ui/admin/tasks"
+	"github.com/xirtah/gopa-ui/modules/ui/admin/console"
+	"github.com/xirtah/gopa-ui/modules/ui/admin/dashboard"
+	"github.com/xirtah/gopa-ui/modules/ui/admin/explore"
+	"github.com/xirtah/gopa-ui/modules/ui/admin/setting"
+	"github.com/xirtah/gopa-ui/modules/ui/admin/tasks"
 	"gopkg.in/yaml.v2"
 )
 
