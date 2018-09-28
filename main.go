@@ -34,7 +34,6 @@ import (
 	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/module"
 	"github.com/xirtah/gopa-framework/core/stats"
-	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-spider/core/version"
 	"github.com/xirtah/gopa-ui/modules"
 )
@@ -123,35 +122,35 @@ func main() {
 	logger.SetLogging(environment, "", "")
 
 	//check instance lock
-	util.CheckInstanceLock(environment.SystemConfig.GetWorkingDir())
+	//util.CheckInstanceLock(environment.SystemConfig.GetWorkingDir())
 
 	//set path to persist id
-	util.RestorePersistID(environment.SystemConfig.GetWorkingDir())
+	//util.RestorePersistID(environment.SystemConfig.GetWorkingDir())
 
 	//cleanup
 	defer func() {
 
-		util.ClearInstanceLock()
+		// 	util.ClearInstanceLock()
 
-		if !global.Env().IsDebug {
-			if r := recover(); r != nil {
-				if r == nil {
-					return
-				}
-				var v string
-				switch r.(type) {
-				case error:
-					v = r.(error).Error()
-				case runtime.Error:
-					v = r.(runtime.Error).Error()
-				case string:
-					v = r.(string)
-				}
-				log.Error("main: ", v)
-			}
-		}
+		// 	if !global.Env().IsDebug {
+		// 		if r := recover(); r != nil {
+		// 			if r == nil {
+		// 				return
+		// 			}
+		// 			var v string
+		// 			switch r.(type) {
+		// 			case error:
+		// 				v = r.(error).Error()
+		// 			case runtime.Error:
+		// 				v = r.(runtime.Error).Error()
+		// 			case string:
+		// 				v = r.(string)
+		// 			}
+		// 			log.Error("main: ", v)
+		// 		}
+		// 	}
 
-		util.SnapshotPersistID()
+		//util.SnapshotPersistID()
 
 		log.Flush()
 		logger.Flush()

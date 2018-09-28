@@ -1,17 +1,10 @@
 package index
 
 import (
-	"encoding/json"
-	"runtime"
-
 	. "github.com/xirtah/gopa-framework/core/config"
-	"github.com/xirtah/gopa-framework/core/global"
 	api "github.com/xirtah/gopa-framework/core/http"
 	core "github.com/xirtah/gopa-framework/core/index"
-	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/model"
-	"github.com/xirtah/gopa-framework/core/queue"
-	"github.com/xirtah/gopa-spider/modules/config"
 	"github.com/xirtah/gopa-ui/modules/index/ui"
 	common "github.com/xirtah/gopa-ui/modules/index/ui/common"
 )
@@ -46,7 +39,7 @@ func (module IndexModule) Start(cfg *Config) {
 	cfg.Unpack(&indexConfig)
 
 	signalChannel = make(chan bool, 1)
-	client := core.ElasticsearchClient{Config: indexConfig.Elasticsearch}
+	//client := core.ElasticsearchClient{Config: indexConfig.Elasticsearch}
 
 	//register UI
 	if indexConfig.UIConfig.Enabled {
@@ -60,54 +53,54 @@ func (module IndexModule) Start(cfg *Config) {
 		api.HandleUIMethod(api.GET, "/suggest/", ui.SuggestAction)
 	}
 
-	go func() {
-		defer func() {
+	// go func() {
+	// 	defer func() {
 
-			if !global.Env().IsDebug {
-				if r := recover(); r != nil {
+	// 		if !global.Env().IsDebug {
+	// 			if r := recover(); r != nil {
 
-					if r == nil {
-						return
-					}
-					var v string
-					switch r.(type) {
-					case error:
-						v = r.(error).Error()
-					case runtime.Error:
-						v = r.(runtime.Error).Error()
-					case string:
-						v = r.(string)
-					}
-					log.Error("error in indexer,", v)
-				}
-			}
-		}()
+	// 				if r == nil {
+	// 					return
+	// 				}
+	// 				var v string
+	// 				switch r.(type) {
+	// 				case error:
+	// 					v = r.(error).Error()
+	// 				case runtime.Error:
+	// 					v = r.(runtime.Error).Error()
+	// 				case string:
+	// 					v = r.(string)
+	// 				}
+	// 				log.Error("error in indexer,", v)
+	// 			}
+	// 		}
+	// 	}()
 
-		for {
-			select {
-			case <-signalChannel:
-				log.Trace("indexer exited")
-				return
-			default:
-				log.Trace("waiting index signal")
-				er, v := queue.Pop(config.IndexChannel)
-				log.Trace("got index signal, ", string(v))
-				if er != nil {
-					log.Error(er)
-					continue
-				}
-				//indexing to es or blevesearch
-				doc := model.IndexDocument{}
-				err := json.Unmarshal(v, &doc)
-				if err != nil {
-					panic(err)
-				}
+	// 	for {
+	// 		select {
+	// 		case <-signalChannel:
+	// 			log.Trace("indexer exited")
+	// 			return
+	// 		default:
+	// 			log.Trace("waiting index signal")
+	// 			er, v := queue.Pop(config.IndexChannel)
+	// 			log.Trace("got index signal, ", string(v))
+	// 			if er != nil {
+	// 				log.Error(er)
+	// 				continue
+	// 			}
+	// 			//indexing to es or blevesearch
+	// 			doc := model.IndexDocument{}
+	// 			err := json.Unmarshal(v, &doc)
+	// 			if err != nil {
+	// 				panic(err)
+	// 			}
 
-				client.Index(doc.Index, doc.ID, doc.Source)
-			}
+	// 			client.Index(doc.Index, doc.ID, doc.Source)
+	// 		}
 
-		}
-	}()
+	// 	}
+	// }()
 }
 
 func (module IndexModule) Stop() error {

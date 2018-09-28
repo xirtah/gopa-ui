@@ -20,7 +20,6 @@ import (
 	"net/http"
 
 	uis "github.com/xirtah/gopa-framework/core/http"
-	"github.com/xirtah/gopa-ui/modules/ui/admin"
 	"github.com/xirtah/gopa-ui/modules/ui/websocket"
 	"github.com/xirtah/gopa-ui/static"
 
@@ -160,8 +159,9 @@ func (module UIModule) Start(cfg *Config) {
 
 	uis.EnableAuth(adminConfig.AuthConfig.Enabled)
 
+	//TODO: only initialise the admin interface if ui is started in admin mode
 	//init admin ui
-	admin.InitUI()
+	//admin.InitUI()
 
 	//init public ui
 	public.InitUI(adminConfig.AuthConfig)
