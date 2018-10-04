@@ -20,6 +20,8 @@ import (
 	"net/http"
 
 	uis "github.com/xirtah/gopa-framework/core/http"
+	"github.com/xirtah/gopa-framework/core/logger"
+	"github.com/xirtah/gopa-ui/modules/ui/admin"
 	"github.com/xirtah/gopa-ui/modules/ui/websocket"
 	"github.com/xirtah/gopa-ui/static"
 
@@ -154,20 +156,34 @@ func (module UIModule) Name() string {
 
 func (module UIModule) Start(cfg *Config) {
 
+	//TODO: Review this admin config code, not sure what it is doing
 	adminConfig := common.UIConfig{}
 	cfg.Unpack(&adminConfig)
-
 	uis.EnableAuth(adminConfig.AuthConfig.Enabled)
 
-	//TODO: only initialise the admin interface if ui is started in admin mode
+	//init public ui
+	if adminConfig.SearchUIConfig.Enabled {
+		public.InitUI(adminConfig.AuthConfig)
+	}
+
+	if adminConfig.AdminUIConfig.Enabled {
+		//init admin ui
+		admin.InitUI()
+		//register websocket logger
+		logger.RegisterWebsocketHandler(LoggerReceiver)
+	}
+
+	//adminConfig1 := common.AdminUIConfig{}
+	//cfg.Unpack(&adminConfig1)
+
+	//fmt.Println("S:", adminConfig1.Enabled)
+
+	//if adminConfig1.Enabled {
 	//init admin ui
 	//admin.InitUI()
-
-	//init public ui
-	public.InitUI(adminConfig.AuthConfig)
-
 	//register websocket logger
-	//logger.RegisterWebsocketHandler(LoggerReceiver)
+	//ogger.RegisterWebsocketHandler(LoggerReceiver)
+	//}
 
 	go func() {
 		module.internalStart(cfg)

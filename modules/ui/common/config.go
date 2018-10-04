@@ -16,6 +16,10 @@ limitations under the License.
 
 package common
 
+type WebUIConfig struct {
+	Enabled bool `config:"enabled"`
+}
+
 type AuthConfig struct {
 	Enabled           bool     `config:"enabled"`
 	OAuthProvider     string   `config:"oauth_provider"`
@@ -28,5 +32,7 @@ type AuthConfig struct {
 }
 
 type UIConfig struct {
-	AuthConfig AuthConfig `config:"auth"`
+	AuthConfig     AuthConfig  `config:"auth"`
+	AdminUIConfig  WebUIConfig `config:"admin_ui"`
+	SearchUIConfig WebUIConfig `config:"search_ui"`
 }
