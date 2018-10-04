@@ -173,18 +173,6 @@ func (module UIModule) Start(cfg *Config) {
 		logger.RegisterWebsocketHandler(LoggerReceiver)
 	}
 
-	//adminConfig1 := common.AdminUIConfig{}
-	//cfg.Unpack(&adminConfig1)
-
-	//fmt.Println("S:", adminConfig1.Enabled)
-
-	//if adminConfig1.Enabled {
-	//init admin ui
-	//admin.InitUI()
-	//register websocket logger
-	//ogger.RegisterWebsocketHandler(LoggerReceiver)
-	//}
-
 	go func() {
 		module.internalStart(cfg)
 	}()

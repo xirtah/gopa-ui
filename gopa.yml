@@ -21,26 +21,6 @@ network:
 #http_bind: 0.0.0.0:9001
 #api_bind: 0.0.0.0:8001
 
-
-# admin:
-#   enabled: true
-
-#  ui:
-#     enabled: true
-#     #site_name: Elasticsearch
-#     logo: http://defence.gov.au/_master/images/layout/gov-crest-horizontal.png
-#     favicon: http://defence.gov.au/favicon.ico
-#     #site_name: XIRTAH
-#     #logo: https://static-www.elastic.co/cn/assets/blt6050efb80ceabd47/elastic-logo (2).svg?q=294
-#     #favicon: https://www.elastic.co/favicon.ico
-#   elasticsearch:
-#     endpoint: http://localhost:9200
-#     index_prefix: gopa-
-#     username: elastic
-#     password: changeme
-
-
-
 modules:
 
 
