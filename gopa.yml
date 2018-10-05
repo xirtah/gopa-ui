@@ -36,8 +36,6 @@ modules:
     authorized_admin:
       - medcl
       - your_github_login_name
-  admin_ui:
-    enabled: true
   search_ui:
     enabled: true
 

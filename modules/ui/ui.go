@@ -20,9 +20,6 @@ import (
 	"net/http"
 
 	uis "github.com/xirtah/gopa-framework/core/http"
-	"github.com/xirtah/gopa-framework/core/logger"
-	"github.com/xirtah/gopa-ui/modules/ui/admin"
-	"github.com/xirtah/gopa-ui/modules/ui/websocket"
 	"github.com/xirtah/gopa-ui/static"
 
 	"crypto/tls"
@@ -39,6 +36,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-ui/modules/ui/common"
 	"github.com/xirtah/gopa-ui/modules/ui/public"
+	websocket "github.com/xirtah/gopa-ui/modules/ui/websocket1"
 )
 
 var router *httprouter.Router
@@ -166,13 +164,6 @@ func (module UIModule) Start(cfg *Config) {
 		public.InitUI(adminConfig.AuthConfig)
 	}
 
-	if adminConfig.AdminUIConfig.Enabled {
-		//init admin ui
-		admin.InitUI()
-		//register websocket logger
-		logger.RegisterWebsocketHandler(LoggerReceiver)
-	}
-
 	go func() {
 		module.internalStart(cfg)
 	}()
@@ -180,11 +171,5 @@ func (module UIModule) Start(cfg *Config) {
 }
 
 func (module UIModule) Stop() error {
-
 	return nil
-}
-
-func LoggerReceiver(message string, level log.LogLevel, context log.LogContextInterface) {
-
-	websocket.BroadcastMessage(message)
 }

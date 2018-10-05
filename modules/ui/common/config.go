@@ -33,6 +33,5 @@ type AuthConfig struct {
 
 type UIConfig struct {
 	AuthConfig     AuthConfig  `config:"auth"`
-	AdminUIConfig  WebUIConfig `config:"admin_ui"`
 	SearchUIConfig WebUIConfig `config:"search_ui"`
 }
