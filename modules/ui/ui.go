@@ -36,7 +36,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/util"
 	"github.com/xirtah/gopa-ui/modules/ui/common"
 	"github.com/xirtah/gopa-ui/modules/ui/public"
-	websocket "github.com/xirtah/gopa-ui/modules/ui/websocket1"
+	websocket "github.com/xirtah/gopa-ui/modules/ui/websocket"
 )
 
 var router *httprouter.Router
