@@ -52,55 +52,6 @@ func (module IndexModule) Start(cfg *Config) {
 		api.HandleUIMethod(api.GET, "/snapshot/:id", api.NeedPermission(model.PERMISSION_SNAPSHOT_VIEW, ui.GetSnapshotPayloadAction))
 		api.HandleUIMethod(api.GET, "/suggest/", ui.SuggestAction)
 	}
-
-	// go func() {
-	// 	defer func() {
-
-	// 		if !global.Env().IsDebug {
-	// 			if r := recover(); r != nil {
-
-	// 				if r == nil {
-	// 					return
-	// 				}
-	// 				var v string
-	// 				switch r.(type) {
-	// 				case error:
-	// 					v = r.(error).Error()
-	// 				case runtime.Error:
-	// 					v = r.(runtime.Error).Error()
-	// 				case string:
-	// 					v = r.(string)
-	// 				}
-	// 				log.Error("error in indexer,", v)
-	// 			}
-	// 		}
-	// 	}()
-
-	// 	for {
-	// 		select {
-	// 		case <-signalChannel:
-	// 			log.Trace("indexer exited")
-	// 			return
-	// 		default:
-	// 			log.Trace("waiting index signal")
-	// 			er, v := queue.Pop(config.IndexChannel)
-	// 			log.Trace("got index signal, ", string(v))
-	// 			if er != nil {
-	// 				log.Error(er)
-	// 				continue
-	// 			}
-	// 			//indexing to es or blevesearch
-	// 			doc := model.IndexDocument{}
-	// 			err := json.Unmarshal(v, &doc)
-	// 			if err != nil {
-	// 				panic(err)
-	// 			}
-
-	// 			client.Index(doc.Index, doc.ID, doc.Source)
-	// 		}
-
-	// 	}
-	// }()
 }
 
 func (module IndexModule) Stop() error {
