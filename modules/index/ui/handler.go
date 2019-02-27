@@ -15,7 +15,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/persist"
 	"github.com/xirtah/gopa-framework/core/util"
-	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-ui/modules/config"
 	common "github.com/xirtah/gopa-ui/modules/index/ui/common"
 	handler "github.com/xirtah/gopa-ui/modules/index/ui/handler"
 	mobileHandler "github.com/xirtah/gopa-ui/modules/index/ui/m/handler"

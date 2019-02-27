@@ -26,7 +26,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/model"
 	"github.com/xirtah/gopa-framework/core/queue"
 	"github.com/xirtah/gopa-framework/core/util"
-	"github.com/xirtah/gopa-spider/modules/config"
+	"github.com/xirtah/gopa-ui/modules/config"
 )
 
 // Command struct forms different command
