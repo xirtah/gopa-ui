@@ -14,7 +14,7 @@ import (
 	"github.com/xirtah/gopa-framework/core/logger"
 	"github.com/xirtah/gopa-framework/core/stats"
 
-	"github.com/xirtah/gopa-spider/core/version"
+	//"github.com/xirtah/gopa-spider/core/version"
 )
 
 // Hub maintains the set of active connections and broadcasts messages to the
@@ -94,7 +94,7 @@ func (h *Hub) runHub() {
 		select {
 		case c := <-h.register:
 			h.connections[c] = true
-			c.WritePrivateMessage(version.GetWelcomeMessage())
+			c.WritePrivateMessage("Welcome!") //c.WritePrivateMessage(version.GetWelcomeMessage())
 			js, _ := json.Marshal(logger.GetLoggingConfig())
 			c.WriteMessage(ConfigMessage, string(js))
 		case c := <-h.unregister:
