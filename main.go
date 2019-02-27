@@ -26,7 +26,7 @@ import (
 	"os/signal"
 	"runtime"
 	"syscall"
-	"time"
+	//"time"
 
 	"github.com/xirtah/gopa-framework/core/env"
 	"github.com/xirtah/gopa-framework/core/global"
@@ -34,7 +34,7 @@ import (
 	log "github.com/xirtah/gopa-framework/core/logger/seelog"
 	"github.com/xirtah/gopa-framework/core/module"
 	"github.com/xirtah/gopa-framework/core/stats"
-	"github.com/xirtah/gopa-spider/core/version"
+	//"github.com/xirtah/gopa-spider/core/version"
 	"github.com/xirtah/gopa-ui/modules"
 )
 
@@ -44,7 +44,8 @@ var (
 )
 
 func onStart() {
-	fmt.Println(version.GetWelcomeMessage())
+	fmt.Println("START")
+	//fmt.Println(version.GetWelcomeMessage())
 }
 
 func onShutdown(isDaemon bool) {
@@ -63,7 +64,7 @@ func onShutdown(isDaemon bool) {
 	fmt.Println("   _` |   _ \\   _ \\   _` |     _ \\  |  |   -_) ")
 	fmt.Println(" \\__, | \\___/ \\___/ \\__,_|   _.__/ \\_, | \\___| ")
 	fmt.Println(" ____/                             ___/        ")
-	fmt.Println("[gopa] "+version.GetVersion()+", uptime:", time.Since(env.GetStartTime()))
+	//fmt.Println("[gopa] "+version.GetVersion()+", uptime:", time.Since(env.GetStartTime()))
 	fmt.Println(" ")
 }
 
