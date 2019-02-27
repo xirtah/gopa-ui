@@ -1,6 +1,7 @@
 */bin/**
+/bin
 /log
 /data
+ego.go
 gopa-ui.exe
 gopa-ui
-ego.go
