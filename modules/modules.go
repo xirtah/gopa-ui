@@ -18,6 +18,8 @@ package modules
 
 import (
 	"github.com/xirtah/gopa-framework/core/module"
+	"github.com/xirtah/gopa-framework/modules/persist"
+	"github.com/xirtah/gopa-framework/modules/storage"
 	"github.com/xirtah/gopa-ui/modules/index"
 	"github.com/xirtah/gopa-ui/modules/ui"
 )
@@ -26,4 +28,6 @@ import (
 func Register() {
 	module.Register(module.Index, index.IndexModule{})
 	module.Register(module.System, ui.UIModule{})
+	module.Register(module.Database, persist.DatabaseModule{})
+	module.Register(module.Storage, storage.StorageModule{})
 }

@@ -39,18 +39,33 @@ modules:
   search_ui:
     enabled: true
 
-# - name: index
-#   enabled: true
-#   ui:
-#     enabled: true
-#     #site_name: Elasticsearch
-#     logo: http://defence.gov.au/_master/images/layout/gov-crest-horizontal.png
-#     favicon: http://defence.gov.au/favicon.ico
-#     #site_name: XIRTAH
-#     #logo: https://static-www.elastic.co/cn/assets/blt6050efb80ceabd47/elastic-logo (2).svg?q=294
-#     #favicon: https://www.elastic.co/favicon.ico
-#   elasticsearch:
-#     endpoint: http://localhost:9200
-#     index_prefix: gopa-
-#     username: elastic
-#     password: changeme
+- name: index
+  enabled: true
+  ui:
+    enabled: true
+    site_name: Xirtah
+    logo: https://static-www.elastic.co/cn/assets/blt6050efb80ceabd47/elastic-logo (2).svg?q=294
+    favicon: https://www.elastic.co/favicon.ico
+  elasticsearch:
+    endpoint: http://127.0.0.1:9200
+    index_prefix: gopa-
+    username: elastic
+    password: changeme
+
+- name: storage
+  enabled: true
+  driver: elasticsearch
+  elasticsearch:
+    endpoint: http://127.0.0.1:9200
+    index_prefix: gopa-
+    #username: elastic
+    #password: changeme
+    
+- name: persist
+  enabled: true
+  driver: elasticsearch
+  elasticsearch:
+    endpoint: http://127.0.0.1:9200
+    index_prefix: gopa-
+#    username: elastic
+#    password: changeme
