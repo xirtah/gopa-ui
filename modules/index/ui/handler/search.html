@@ -103,7 +103,7 @@
                                 key:=bkt.Key
                                 c:=bkt.DocCount
                                 %>
-                                <li><a href=<%==fmt.Sprintf("?q=%s&filter=%s|%v&from=0",q,common.GetBucketKey(k),util.UrlEncode(key)) %> ><%= key %><count>(<%= c %>)</count></a></li>
+                                <li><a href=<%==fmt.Sprintf("?q=%s&filter=%s|%v&from=0",q,common.GetBucketKey(k),util.UrlEncode(key.(string))) %> ><%= key %><count>(<%= c %>)</count></a></li>
 
                                 <% } %>
                                             </ul>
